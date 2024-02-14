@@ -33,4 +33,16 @@ function orderTickets() {
         "    <th><strong>PhoneNr</strong></th>\n" +
         "    <th><strong>Email</strong></th>\n" +
         "</tr><br>"
+
+    // Adding a for-loop to get the array elements as a row.
+    for (let o of orderArray) {
+        out += "<tr>";
+        out += "<td>" + o.chosenMovie + "</td><td>" + o.amountOfTickets + "</td><td>" + o.theFirstName + "</td><td>" +
+            o.theLastName + "</td><td>" + o.thePhoneNr + "</td><td>" + o.theEmail + "</td>"
+        out += "</tr>";
+    }
+    out += "</table>";
+
+    // Setting the output to display at the div section in html.
+    document.getElementById("output").innerHTML=out;
 }
