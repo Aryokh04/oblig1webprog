@@ -45,4 +45,12 @@ function orderTickets() {
 
     // Setting the output to display at the div section in html.
     document.getElementById("output").innerHTML=out;
+
+    // Emptying input after adding elements to array
+    chosenMovie = document.getElementById("selectmovie").value = "";
+    amountOfTickets = document.getElementById("amount").value = "";
+    theFirstName = document.getElementById("firstname").value = "";
+    theLastName = document.getElementById("lastname").value = "";
+    thePhoneNr = document.getElementById("phonenr").value = "";
+    theEmail = document.getElementById("email").value = "";
 }
