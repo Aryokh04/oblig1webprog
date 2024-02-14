@@ -3,8 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <script src="index.js"></script>
 </head>
 <body>
+<!--
+Creating an "Order tickets" button that won´t refresh the page
+and inputs using different regular expressions and required to validate input.
+I also made a table structure to get the input box to start from the same place under eachother.
+-->
+<form onsubmit="orderTickets(); return false">
+    <table>
+        <tr><td><label for="selectmovie">Choose movie:</label></td>
+            <td><select id="selectmovie" required>
+                <option value="">Choose movie</option>
+                <option value="Conjuring 4">Conjuring 4</option>
+                <option value="Inside Out 2">Inside Out 2</option>
+                <option value="Mean Girls 2">Mean Girls 2</option>
+            </select></tr></td>
 
+        <tr><td><label for="amount">Amount:</label></td>
+            <td><input type="text" id="amount" pattern="[0-9]+" title="Choose a number!" required></tr></td>
+
+        <tr><td><label for="firstname">First name:</label></td>
+            <td><input type="text" id="firstname" required></tr></td>
+
+        <tr><td><label for="lastname">Last name:</label></td>
+            <td><input type="text" id="lastname" required></tr></td>
+
+        <tr><td><label for="phonenr">PhoneNr:</label></td>
+            <td><input type="text" id="phonenr" pattern="[0-9]{8}" title="invalid phone number!" required></tr></td>
+
+        <tr><td><label for="email">Email:</label></td>
+            <td><input type="text" id="email" pattern="[^@]+@[^@]+\.[a-zA-Z]{2,}" title="Invalid email!" required></tr></td>
+    </table>
+    <button id="buyticket">Buy tickets</button>
+</form>
+
+
+<h3>All tickets</h3>
+<br>
+
+<div id="output"></div>
+<button id="deletetickets" onclick="deleteTheTickets()">Delete all tickets</button>
+
+
+</body>
+</html>
 </body>
 </html>
