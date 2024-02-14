@@ -1,7 +1,7 @@
 // Defining an empty array.
 let orderArray = [];
 
-// Making a function
+// Making a function for ordering tickets.
 function orderTickets() {
     // The function starts with creating variables and getting the value from the html
     let chosenMovie = document.getElementById("selectmovie").value;
@@ -53,4 +53,10 @@ function orderTickets() {
     theLastName = document.getElementById("lastname").value = "";
     thePhoneNr = document.getElementById("phonenr").value = "";
     theEmail = document.getElementById("email").value = "";
+}
+
+// Creating a function to delete the tickets.
+function deleteTheTickets() {
+    orderArray = [];
+    document.getElementById("output").innerHTML = "";
 }
