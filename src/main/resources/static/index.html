@@ -15,7 +15,7 @@ Styled with Bootstrap 4.
 -->
 <div class="container">
     <h1>Order movie tickets</h1>
-    <form onsubmit="orderTickets(); return false">
+    <form onsumbit="confirmOrder(); return false">
         <form>
             <div class="form-group">
                 <label for="selectmovie">Choose movie:</label>
@@ -56,11 +56,10 @@ Styled with Bootstrap 4.
             <button id="buyticket" class="btn btn-primary">Buy tickets</button>
         </form>
     </form>
-
 <br><br>
 <h3>All Orders</h3>
 <div id="output"></div>
-<button id="deletetickets" class="btn btn-danger" onclick="deleteTheTickets()">Delete all tickets</button>
+<button id="deleteOrders" class="btn btn-danger" onclick="deleteTheTickets()">Delete all tickets</button>
 
 </div>
 </body>
