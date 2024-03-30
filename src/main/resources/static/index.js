@@ -4,12 +4,12 @@ let orderArray = [];
 // Making a function for ordering tickets.
 function orderTickets() {
     // The function starts with creating variables and getting the value from the html
-    let chosenMovie = document.getElementById("selectmovie").value;
-    let amountOfTickets = document.getElementById("amount").value;
-    let theFirstName = document.getElementById("firstname").value;
-    let theLastName = document.getElementById("lastname").value;
-    let thePhoneNr = document.getElementById("phonenr").value;
-    let theEmail = document.getElementById("email").value;
+    let chosenMovie = $("#selectmovie").val();
+    let amountOfTickets = $("#amount").val();
+    let theFirstName = $("#firstname").val();
+    let theLastName = $("#lastname").val();
+    let thePhoneNr = $("#phonenr").val();
+    let theEmail = $("#email").val();
 
     // Creating an object "persons" with the variables.
     let persons = {
@@ -44,15 +44,15 @@ function orderTickets() {
     out += "</table>";
 
     // Setting the output to display at the div section in html.
-    document.getElementById("output").innerHTML=out;
+    $("#output").html(out)
 
     // Emptying input after adding elements to array
-    chosenMovie = document.getElementById("selectmovie").value = "";
-    amountOfTickets = document.getElementById("amount").value = "";
-    theFirstName = document.getElementById("firstname").value = "";
-    theLastName = document.getElementById("lastname").value = "";
-    thePhoneNr = document.getElementById("phonenr").value = "";
-    theEmail = document.getElementById("email").value = "";
+    chosenMovie = $("#selectmovie").val("");
+    amountOfTickets = $("#amount").val("");
+    theFirstName = $("#firstname").val("");
+    theLastName = $("#lastname").val("");
+    thePhoneNr = $("#phonenr").val("");
+    theEmail = $("#email").val("");
 }
 
 // Creating a function to delete the tickets.
