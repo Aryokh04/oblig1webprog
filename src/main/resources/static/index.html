@@ -5,49 +5,63 @@
     <title>Title</title>
     <script src="index.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 </head>
 <body>
-<h1>Order movie tickets</h1>
 <!--
 Creating an "Order tickets" button that won´t refresh the page
 and inputs using different regular expressions and required to validate input.
-I also made a table structure to get the input box to start from the same place under eachother.
+Styled with Bootstrap 4.
 -->
-<form onsubmit="orderTickets(); return false">
-    <table>
-        <tr><td><label for="selectmovie">Choose movie:</label></td>
-            <td><select id="selectmovie" required>
-                <option value="">Choose movie</option>
-                <option value="Conjuring 4">Conjuring 4</option>
-                <option value="Inside Out 2">Inside Out 2</option>
-                <option value="Mean Girls 2">Mean Girls 2</option>
-            </select></tr></td>
+<div class="container">
+    <h1>Order movie tickets</h1>
+    <form onsubmit="orderTickets(); return false">
+        <form>
+            <div class="form-group">
+                <label for="selectmovie">Choose movie:</label>
+                <select class="form-control" id="selectmovie" required>
+                    <option value="">Choose movie</option>
+                    <option value="Conjuring 4">Conjuring 4</option>
+                    <option value="Inside Out 2">Inside Out 2</option>
+                    <option value="Mean Girls 2">Mean Girls 2</option>
+                </select>
+            </div>
 
-        <tr><td><label for="amount">Amount:</label></td>
-            <td><input type="text" id="amount" pattern="[0-9]+" title="Choose a number!" required></tr></td>
+            <div class="form-group">
+                <label for="amount">Amount:</label>
+                <input type="text" class="form-control" id="amount" pattern="[0-9]+" title="Choose a number!" required>
+            </div>
 
-        <tr><td><label for="firstname">First name:</label></td>
-            <td><input type="text" id="firstname" required></tr></td>
+            <div class="form-group">
+                <label for="firstname">First name:</label>
+                <input type="text" class="form-control" id="firstname" required>
+            </div>
 
-        <tr><td><label for="lastname">Last name:</label></td>
-            <td><input type="text" id="lastname" required></tr></td>
+            <div class="form-group">
+                <label for="lastname">Last name:</label>
+                <input type="text" class="form-control" id="lastname" required>
+            </div>
 
-        <tr><td><label for="phonenr">PhoneNr:</label></td>
-            <td><input type="text" id="phonenr" pattern="[0-9]{8}" title="invalid phone number!" required></tr></td>
-
-        <tr><td><label for="email">Email:</label></td>
-            <td><input type="text" id="email" pattern="[^@]+@[^@]+\.[a-zA-Z]{2,}" title="Invalid email!" required></tr></td>
-    </table>
-    <button id="buyticket">Buy tickets</button>
-</form>
+            <div class="form-group">
+                <label for="phonenr">PhoneNr:</label>
+                <input type="text" class="form-control" id="phonenr" pattern="[0-9]{8}" title="invalid phone number!" required>
+            </div>
 
 
-<h3>All tickets</h3>
-<br>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="text" class="form-control" id="email" pattern="[^@]+@[^@]+\.[a-zA-Z]{2,}" title="Invalid email!" required>
+            </div>
 
+            <button id="buyticket" class="btn btn-primary">Buy tickets</button>
+        </form>
+    </form>
+
+<br><br>
+<h3>All Orders</h3>
 <div id="output"></div>
-<button id="deletetickets" onclick="deleteTheTickets()">Delete all tickets</button>
+<button id="deletetickets" class="btn btn-danger" onclick="deleteTheTickets()">Delete all tickets</button>
 
-
+</div>
 </body>
 </html>

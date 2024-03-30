@@ -25,7 +25,7 @@ function orderTickets() {
     orderArray.push(persons);
 
     // Creating the first row that shows the info the array contains.
-    out = "<table><tr>" +
+    out = "<table class='table table-striped table-bordered'><tr>" +
         "    <th><strong>Movie</strong></th>\n" +
         "    <th><strong>Amount</strong></th>\n" +
         "    <th><strong>First name</strong></th>\n" +
