@@ -1,4 +1,4 @@
-
+// Function for buying tickets that creates js object and clears input after each order
 function confirmOrder() {
     let order = {
         chosenMovie: $("#selectmovie").val(),
@@ -8,8 +8,7 @@ function confirmOrder() {
         phoneNr: $("#phonenr").val(),
         email: $("#email").val()
     };
-    console.log(order);
-    $.post("http://localhost:8080/saveInfo", order, function() {
+    $.post("/saveInfo", order, function() {
         getOrders();
     });
     // Clear input
@@ -21,13 +20,15 @@ function confirmOrder() {
     $("#email").val("");
 }
 
+// Function that gets the data from server.
 function getOrders() {
-    $.get("http://localhost:8080/getInfo", function(data) {
-        NewFormat(data);
+    $.get("/getInfo", function(data) {
+        newFormat(data);
         console.log(data);
     });
 }
 
+// Presents the orders in a table structure.
 function newFormat(orders) {
     let out = "<table class='table table-striped table-bordered'><tr>" +
         "    <th><strong>Movie</strong></th>\n" +
@@ -47,4 +48,10 @@ function newFormat(orders) {
      }
     out += "</table>";
     $("#output").html(out);
+}
+
+// Function that deletes the tickets with post that clears array and setting output div to empty string.
+function deleteTheTickets() {
+    $.post("/deleteInfo")
+    $("#output").html("");
 }

@@ -11,12 +11,12 @@
 <!--
 Creating an "Order tickets" button that won´t refresh the page
 and inputs using different regular expressions and required to validate input.
-Styled with Bootstrap 4.
+Styled with Bootstrap 4. Adding div under the "Buy tickets" that shows the orders in a table and empties
+the table with the DeleteTheTickets() function after clicking the "deleteOrders" button.
 -->
 <div class="container">
     <h1>Order movie tickets</h1>
-    <form onsumbit="confirmOrder(); return false">
-        <form>
+    <form onsubmit="confirmOrder(); return false">
             <div class="form-group">
                 <label for="selectmovie">Choose movie:</label>
                 <select class="form-control" id="selectmovie" required>
@@ -53,8 +53,7 @@ Styled with Bootstrap 4.
                 <input type="text" class="form-control" id="email" pattern="[^@]+@[^@]+\.[a-zA-Z]{2,}" title="Invalid email!" required>
             </div>
 
-            <button id="buyticket" class="btn btn-primary">Buy tickets</button>
-        </form>
+            <button type="submit" id="buyticket" class="btn btn-primary">Buy tickets</button>
     </form>
 <br><br>
 <h3>All Orders</h3>
