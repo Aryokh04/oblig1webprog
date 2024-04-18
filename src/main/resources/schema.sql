@@ -1,0 +1,8 @@
+CREATE TABLE Order (
+    OrderID LONG AUTO_INCREMENT,
+    ChosenMovie VARCHAR(255) NOT NULL,
+    Amount INTEGER NOT NULL,
+    FirstName VARCHAR(255) NOT NULL,
+    LastName VARCHAR(255) NOT NULL,
+    PRIMARY KEY(OrderID)
+);
