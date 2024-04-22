@@ -21,6 +21,12 @@ public class OrderRepository {
         List<Order> allOrders = db.query(sql, new BeanPropertyRowMapper<>(Order.class));
         return allOrders;
     }
+
+    /*
+    public int getOrderWithID(Long orderID) {
+        return db.update("SELECT * FROM Orders WHERE OrderID = ?", orderID);
+    }
+    */
     public void deleteAllOrders() {
         String sql = "DELETE FROM Orders";
         db.update(sql);
@@ -30,11 +36,12 @@ public class OrderRepository {
         String sql = "DELETE FROM Orders WHERE OrderID = ?";
         db.update(sql, orderID);
     }
-
+/*
     public int changeOrderIndividually(Order inOrder) {
         String sql = "UPDATE Orders SET chosenMovie = ?, amount = ?, firstName = ?, lastName = ?, phoneNr = ?, email = ?" +
                 "WHERE orderID = ?";
         return db.update(sql, inOrder.getOrderID(), inOrder.getChosenMovie(), inOrder.getAmount(), inOrder.getFirstName(), inOrder.getLastName()
-        , inOrder.getPhoneNr(), inOrder.getEmail())
+        , inOrder.getPhoneNr(), inOrder.getEmail());
     }
+ */
 }

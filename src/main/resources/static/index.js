@@ -38,6 +38,7 @@ function newFormat(orders) {
         "    <th><strong>PhoneNr</strong></th>\n" +
         "    <th><strong>Email</strong></th>\n" +
         "    <th><strong>Delete</strong></th>\n" +
+        "    <th><strong>Edit</strong></th>\n" +
         "</tr><br>";
 
     // Adding a for-loop to get the array elements as a row.
@@ -63,7 +64,8 @@ function deleteOrderIndividually(orderID) {
     $.ajax({url: "/deleteEachOrder?orderID="+orderID, method: "DELETE"}).done(function() {getOrders()});
 }
 
-function changeOrderIndividually(orderID) {
+/*
+ function changeOrderIndividually(orderID) {
     $("#theOrderID").html() = orderID;
     $.get("/getTheOrderDB?orderID="+orderID, function(data){
         $("#selectmovieEdit").val() = data.chosenMovie;
@@ -86,5 +88,7 @@ function changeOrderIndividuallyDB() {
         email: $("#emailEdit").val()
     };
     console.log($("#theOrderID").val());
-    $.post("/changeAnOrder", order, function(data){})
+    $.post("/editedOrder", order, function(data){})
+
 }
+ */
