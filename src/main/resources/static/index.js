@@ -44,7 +44,9 @@ function newFormat(orders) {
      for (let o of orders) {
         out += "<tr>";
         out += "<td>" + o.chosenMovie + "</td><td>" + o.amount + "</td><td>" + o.firstName + "</td><td>" +
-            o.lastName + "</td><td>" + o.phoneNr + "</td><td>" + o.email + "</td><td><button class= 'btn btn-danger' onclick='deleteOrderIndividually(" + o.orderID + ")'> Delete </button></td>";
+            o.lastName + "</td><td>" + o.phoneNr + "</td><td>" + o.email + "</td><td><button class= 'btn btn-danger' " +
+            "onclick='deleteOrderIndividually(" + o.orderID + ")'> Delete Order </button></td>" + "<td> <button class='btn btn-primary' " +
+            "onclick='changeOrderIndividually(" + o.orderID + ")'>Change Order info</button></td>";
         out += "</tr>";
      }
     out += "</table>";
@@ -59,4 +61,30 @@ function deleteTheTickets() {
 
 function deleteOrderIndividually(orderID) {
     $.ajax({url: "/deleteEachOrder?orderID="+orderID, method: "DELETE"}).done(function() {getOrders()});
+}
+
+function changeOrderIndividually(orderID) {
+    $("#theOrderID").html() = orderID;
+    $.get("/getTheOrderDB?orderID="+orderID, function(data){
+        $("#selectmovieEdit").val() = data.chosenMovie;
+        $("#amountEdit").val() = data.amount;
+        $("#firstnameEdit").val() = data.firstName;
+        $("#lastnameEdit").val() = data.lastName;
+        $("#phonenrEdit").val() = data.phoneNr;
+        $("#emailEdit").val() = data.email;
+    })
+}
+
+function changeOrderIndividuallyDB() {
+    let order = {
+        orderID: $("#theOrderID").html(),
+        chosenMovie: $("#firstnameEdit").val(),
+        amount: $("#amountEdit").val(),
+        firstName: $("#firstnameEdit").val(),
+        lastName: $("#lastnameEdit").val(),
+        phoneNr: $("#phonenrEdit").val(),
+        email: $("#emailEdit").val()
+    };
+    console.log($("#theOrderID").val());
+    $.post("/changeAnOrder", order, function(data){})
 }

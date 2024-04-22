@@ -61,5 +61,50 @@ the table with the DeleteTheTickets() function after clicking the "deleteOrders"
 <button id="deleteOrders" class="btn btn-danger" onclick="deleteTheTickets()">Delete all tickets</button>
 
 </div>
+<br><br>
+
+<div class="container">
+    <h1>Edit Order</h1>
+    <form onsubmit="changeOrderIndividuallyDB(); return false">
+        <div class="form-group">
+            <p id="theOrderID">Order Number</p>
+            <label for="selectmovie">Choose movie:</label>
+            <select class="form-control" id="selectmovieEdit" required>
+                <option value="">Choose movie</option>
+                <option value="Conjuring 4">Conjuring 4</option>
+                <option value="Inside Out 2">Inside Out 2</option>
+                <option value="Mean Girls 2">Mean Girls 2</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="amount">Amount:</label>
+            <input type="text" class="form-control" id="amountEdit" pattern="[0-9]+" title="Choose a number!" required>
+        </div>
+
+        <div class="form-group">
+            <label for="firstname">First name:</label>
+            <input type="text" class="form-control" id="firstnameEdit" required>
+        </div>
+
+        <div class="form-group">
+            <label for="lastname">Last name:</label>
+            <input type="text" class="form-control" id="lastnameEdit" required>
+        </div>
+
+        <div class="form-group">
+            <label for="phonenr">PhoneNr:</label>
+            <input type="text" class="form-control" id="phonenrEdit" pattern="[0-9]{8}" title="invalid phone number!" required>
+        </div>
+
+
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="text" class="form-control" id="emailEdit" pattern="[^@]+@[^@]+\.[a-zA-Z]{2,}" title="Invalid email!" required>
+        </div>
+
+        <button type="button" id="changeOrder" class="btn btn-primary">Confirm Changes</button>
+    </form>
+</div>
 </body>
 </html>

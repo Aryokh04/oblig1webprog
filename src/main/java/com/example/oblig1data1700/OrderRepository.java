@@ -30,4 +30,11 @@ public class OrderRepository {
         String sql = "DELETE FROM Orders WHERE OrderID = ?";
         db.update(sql, orderID);
     }
+
+    public int changeOrderIndividually(Order inOrder) {
+        String sql = "UPDATE Orders SET chosenMovie = ?, amount = ?, firstName = ?, lastName = ?, phoneNr = ?, email = ?" +
+                "WHERE orderID = ?";
+        return db.update(sql, inOrder.getOrderID(), inOrder.getChosenMovie(), inOrder.getAmount(), inOrder.getFirstName(), inOrder.getLastName()
+        , inOrder.getPhoneNr(), inOrder.getEmail())
+    }
 }

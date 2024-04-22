@@ -29,4 +29,10 @@ public class HomeController {
     public void deleteOrderIndividually(@RequestParam Long orderID) {
         rep.deleteOrderIndividually(orderID);
     }
+
+    @GetMapping("getTheOrderDB")
+
+    @PostMapping("/changeAnOrder")
+    public Order changeOrderIndividually()
 }
+
