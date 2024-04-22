@@ -1,8 +1,6 @@
 package com.example.oblig1data1700;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.ArrayList;
@@ -25,5 +23,10 @@ public class HomeController {
     @PostMapping("/deleteInfo")
     public void deleteOrders() {
         rep.deleteAllOrders();
+    }
+
+    @DeleteMapping("/deleteEachOrder")
+    public void deleteOrderIndividually(@RequestParam Long orderID) {
+        rep.deleteOrderIndividually(orderID);
     }
 }

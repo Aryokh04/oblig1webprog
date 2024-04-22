@@ -25,4 +25,9 @@ public class OrderRepository {
         String sql = "DELETE FROM Orders";
         db.update(sql);
     }
+
+    public void deleteOrderIndividually(Long orderID) {
+        String sql = "DELETE FROM Orders WHERE OrderID = ?";
+        db.update(sql, orderID);
+    }
 }

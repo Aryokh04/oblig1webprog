@@ -37,13 +37,14 @@ function newFormat(orders) {
         "    <th><strong>Last name</strong></th>\n" +
         "    <th><strong>PhoneNr</strong></th>\n" +
         "    <th><strong>Email</strong></th>\n" +
+        "    <th><strong>Delete</strong></th>\n" +
         "</tr><br>";
 
     // Adding a for-loop to get the array elements as a row.
      for (let o of orders) {
         out += "<tr>";
         out += "<td>" + o.chosenMovie + "</td><td>" + o.amount + "</td><td>" + o.firstName + "</td><td>" +
-            o.lastName + "</td><td>" + o.phoneNr + "</td><td>" + o.email + "</td>";
+            o.lastName + "</td><td>" + o.phoneNr + "</td><td>" + o.email + "</td><td><button class= 'btn btn-danger' onclick='deleteOrderIndividually(" + o.orderID + ")'> Delete </button></td>";
         out += "</tr>";
      }
     out += "</table>";
@@ -54,4 +55,8 @@ function newFormat(orders) {
 function deleteTheTickets() {
     $.post("/deleteInfo")
     $("#output").html("");
+}
+
+function deleteOrderIndividually(orderID) {
+    $.ajax({url: "/deleteEachOrder?orderID="+orderID, method: "DELETE"}).done(function() {getOrders()});
 }
