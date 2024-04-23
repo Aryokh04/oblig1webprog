@@ -65,7 +65,7 @@ the table with the DeleteTheTickets() function after clicking the "deleteOrders"
 
 <div class="container">
     <h1>Edit Order</h1>
-    <form onsumbit="changeOrderIndividually(); return false">
+    <form>
         <div class="form-group">
             <input type="hidden" id="theOrderID"/>
             <label for="selectmovie">Choose movie:</label>
@@ -103,7 +103,7 @@ the table with the DeleteTheTickets() function after clicking the "deleteOrders"
             <input type="text" class="form-control" id="emailEdit" pattern="[^@]+@[^@]+\.[a-zA-Z]{2,}" title="Invalid email!" required>
         </div>
 
-        <button type="button" id="changeOrder" class="btn btn-primary" onclick="changeOrderIndividually()">Confirm Changes</button>
+        <button type="button" id="changeOrder" class="btn btn-primary" onclick="changeOrderIndividually(); return false">Confirm Changes</button>
     </form>
 </div>
 
