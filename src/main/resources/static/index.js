@@ -47,7 +47,7 @@ function newFormat(orders) {
         out += "<td>" + o.chosenMovie + "</td><td>" + o.amount + "</td><td>" + o.firstName + "</td><td>" +
             o.lastName + "</td><td>" + o.phoneNr + "</td><td>" + o.email + "</td><td><button class= 'btn btn-danger' " +
             "onclick='deleteOrderIndividually(" + o.orderID + ")'> Delete Order </button></td>" + "<td> <button class='btn btn-primary' " +
-            "onclick='changeOrderIndividually(" + o.orderID + ")'>Change Order info</button></td>";
+            "onclick='getOrderIndividuallyDB(" + o.orderID + ")'>Change Order info</button></td>";
         out += "</tr>";
      }
     out += "</table>";
@@ -61,34 +61,40 @@ function deleteTheTickets() {
 }
 
 function deleteOrderIndividually(orderID) {
-    $.ajax({url: "/deleteEachOrder?orderID="+orderID, method: "DELETE"}).done(function() {getOrders()});
-}
-
-/*
- function changeOrderIndividually(orderID) {
-    $("#theOrderID").html() = orderID;
-    $.get("/getTheOrderDB?orderID="+orderID, function(data){
-        $("#selectmovieEdit").val() = data.chosenMovie;
-        $("#amountEdit").val() = data.amount;
-        $("#firstnameEdit").val() = data.firstName;
-        $("#lastnameEdit").val() = data.lastName;
-        $("#phonenrEdit").val() = data.phoneNr;
-        $("#emailEdit").val() = data.email;
+    $.ajax({
+        url: "/deleteEachOrder?orderID=" + orderID,
+        type: "DELETE",
+        success: function() {getOrders()}
     })
 }
 
-function changeOrderIndividuallyDB() {
-    let order = {
-        orderID: $("#theOrderID").html(),
-        chosenMovie: $("#firstnameEdit").val(),
-        amount: $("#amountEdit").val(),
-        firstName: $("#firstnameEdit").val(),
-        lastName: $("#lastnameEdit").val(),
-        phoneNr: $("#phonenrEdit").val(),
-        email: $("#emailEdit").val()
-    };
-    console.log($("#theOrderID").val());
-    $.post("/editedOrder", order, function(data){})
-
+function getOrderIndividuallyDB(orderID) {
+    let url = "/getAnOrderDB?orderID=" + orderID;
+    $.get(url, function (order) {
+        $("#theOrderID").val(order.orderID);
+        $("#selectmovieEdit").val(order.chosenMovie);
+        $("#amountEdit").val(order.amount);
+        $("#firstnameEdit").val(order.firstName);
+        $("#lastnameEdit").val(order.lastName);
+        $("#phonenrEdit").val(order.phoneNr);
+        $("#emailEdit").val(order.email);
+    });
 }
- */
+
+    function changeOrderIndividually() {
+    console.log($("#theOrderID").val());
+        $.ajax({
+            url: "/changeOrderIndividually",
+            type: "PUT",
+            data: {
+                orderID: $("#theOrderID").val(),
+                chosenMovie: $("#selectmovieEdit").val(),
+                amount: $("#amountEdit").val(),
+                firstName: $("#firstnameEdit").val(),
+                lastName: $("#lastnameEdit").val(),
+                phoneNr: $("#phonenrEdit").val(),
+                email: $("#emailEdit").val()
+            },
+            success: function() {getOrders()}
+        })
+    }

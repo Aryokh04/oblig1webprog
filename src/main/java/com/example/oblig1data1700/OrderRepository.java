@@ -22,11 +22,6 @@ public class OrderRepository {
         return allOrders;
     }
 
-    /*
-    public int getOrderWithID(Long orderID) {
-        return db.update("SELECT * FROM Orders WHERE OrderID = ?", orderID);
-    }
-    */
     public void deleteAllOrders() {
         String sql = "DELETE FROM Orders";
         db.update(sql);
@@ -36,12 +31,16 @@ public class OrderRepository {
         String sql = "DELETE FROM Orders WHERE OrderID = ?";
         db.update(sql, orderID);
     }
-/*
-    public int changeOrderIndividually(Order inOrder) {
-        String sql = "UPDATE Orders SET chosenMovie = ?, amount = ?, firstName = ?, lastName = ?, phoneNr = ?, email = ?" +
-                "WHERE orderID = ?";
-        return db.update(sql, inOrder.getOrderID(), inOrder.getChosenMovie(), inOrder.getAmount(), inOrder.getFirstName(), inOrder.getLastName()
-        , inOrder.getPhoneNr(), inOrder.getEmail());
+
+    public Order getOrderDB(Long orderID) {
+        String sql = "SELECT * FROM Orders WHERE OrderID = ?";
+        Order anOrder = db.queryForObject(sql, new BeanPropertyRowMapper<>(Order.class), orderID);
+        return anOrder;
     }
- */
+
+    public void updateOrderIndividually(Order inOrder) {
+        String sql = "UPDATE Orders SET ChosenMovie = ?, Amount = ?, FirstName = ?, LastName = ?, PhoneNr = ?, Email = ?"
+                + "WHERE OrderID = ?";
+        db.update(sql, inOrder.getChosenMovie(), inOrder.getAmount(), inOrder.getFirstName(), inOrder.getLastName(), inOrder.getPhoneNr(), inOrder.getEmail(), inOrder.getOrderID());
+    }
 }

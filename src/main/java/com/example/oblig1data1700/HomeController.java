@@ -30,11 +30,18 @@ public class HomeController {
         rep.deleteOrderIndividually(orderID);
     }
 
-    /*
-   @GetMapping("getTheOrderDB")
-    public void getOrderIndividuallyDB(@RequestParam Long orderID) {
-        rep.changeOrderIndividually(orderID);
+
+   @GetMapping("/getAnOrderDB")
+    public Order getOrderIndividuallyDB(@RequestParam Long orderID) {
+        return rep.getOrderDB(orderID);
     }
+
+    @PutMapping("/changeOrderIndividually")
+    public void updateOrderIndividuallyDB(Order inOrder) {
+        rep.updateOrderIndividually(inOrder);
+    }
+
+    /*
 
     @PostMapping("/editedOrder")
     public void editedOrderDB(Order inOrder) {
