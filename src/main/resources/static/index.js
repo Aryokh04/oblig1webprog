@@ -1,4 +1,4 @@
-// Function for buying tickets that creates js object and clears input after each order
+// Function for buying tickets that creates js object with values from input
 function confirmOrder() {
     let order = {
         chosenMovie: $("#selectmovie").val(),
@@ -8,6 +8,7 @@ function confirmOrder() {
         phoneNr: $("#phonenr").val(),
         email: $("#email").val()
     };
+    // Using jQuery´s post to send the order and run getOrders function
     $.post("/saveInfo", order, function() {
         getOrders();
     });
@@ -20,7 +21,7 @@ function confirmOrder() {
     $("#email").val("");
 }
 
-// Function that gets the data from server.
+// Function that gets the data from server, runs newFormat function and logs the data that is received
 function getOrders() {
     $.get("/getInfo", function(data) {
         newFormat(data);
@@ -41,7 +42,7 @@ function newFormat(orders) {
         "    <th><strong>Edit</strong></th>\n" +
         "</tr><br>";
 
-    // Adding a for-loop to get the array elements as a row.
+    // Adding a for-loop to get the array elements as a row. Also adding delete and edit buttons to change individual orders
      for (let o of orders) {
         out += "<tr>";
         out += "<td>" + o.chosenMovie + "</td><td>" + o.amount + "</td><td>" + o.firstName + "</td><td>" +
@@ -60,6 +61,8 @@ function deleteTheTickets() {
     $("#output").html("");
 }
 
+// function that takes an orderID and then uses jQuery´s ajax function to delete an order individually and runs getOrders
+// to update the table in frontend
 function deleteOrderIndividually(orderID) {
     $.ajax({
         url: "/deleteEachOrder?orderID=" + orderID,
@@ -68,6 +71,7 @@ function deleteOrderIndividually(orderID) {
     })
 }
 
+// For the edit button to show info in inputs with orderID as parameter
 function getOrderIndividuallyDB(orderID) {
     let url = "/getAnOrderDB?orderID=" + orderID;
     $.get(url, function (order) {
@@ -81,20 +85,20 @@ function getOrderIndividuallyDB(orderID) {
     });
 }
 
-    function changeOrderIndividually() {
-    console.log($("#theOrderID").val());
-        $.ajax({
-            url: "/changeOrderIndividually",
-            type: "PUT",
-            data: {
-                orderID: $("#theOrderID").val(),
-                chosenMovie: $("#selectmovieEdit").val(),
-                amount: $("#amountEdit").val(),
-                firstName: $("#firstnameEdit").val(),
-                lastName: $("#lastnameEdit").val(),
-                phoneNr: $("#phonenrEdit").val(),
-                email: $("#emailEdit").val()
-            },
-            success: function() {getOrders()}
-        })
-    }
+// function that updates with new input values when editing an order and runs getOrders to update frontend table
+function changeOrderIndividually() {
+    $.ajax({
+        url: "/changeOrderIndividually",
+        type: "PUT",
+        data: {
+            orderID: $("#theOrderID").val(),
+            chosenMovie: $("#selectmovieEdit").val(),
+            amount: $("#amountEdit").val(),
+            firstName: $("#firstnameEdit").val(),
+            lastName: $("#lastnameEdit").val(),
+            phoneNr: $("#phonenrEdit").val(),
+            email: $("#emailEdit").val()
+        },
+        success: function() {getOrders()}
+    })
+}

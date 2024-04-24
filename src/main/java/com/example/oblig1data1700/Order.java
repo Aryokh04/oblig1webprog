@@ -1,7 +1,6 @@
 package com.example.oblig1data1700;
 
-// Defining each attribute for the Order object in java.
-// Using lombok dependency for creating a constructor, empty constructor and get/set.
+// Creating a POJO for saving in server
 
 public class Order {
     private Long orderID;

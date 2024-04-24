@@ -7,7 +7,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 </head>
-<body>
+<!-- Shows the table when the page is refreshed -->
+<body onload="getOrders()">
 <!--
 Creating an "Order tickets" button that won´t refresh the page
 and inputs using different regular expressions and required to validate input.
@@ -63,6 +64,7 @@ the table with the DeleteTheTickets() function after clicking the "deleteOrders"
 </div>
 <br><br>
 
+<!-- Input for editing an order with changeOrderIndividually function -->
 <div class="container">
     <h1>Edit Order</h1>
     <form>
